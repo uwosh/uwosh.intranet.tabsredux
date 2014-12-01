@@ -1,0 +1,9 @@
+<?xml version="1.0"?>
+<object name="portal_factory" meta_type="Plone Factory Tool">
+  <factorytypes>
+    <type portal_type="Tab" />
+    <type portal_type="TabDescription" />
+    <type portal_type="TabGroup" />
+    <type portal_type="TabLink" />
+  </factorytypes>
+</object>

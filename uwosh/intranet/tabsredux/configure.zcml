@@ -1,0 +1,87 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="uwosh.intranet.tabsredux">
+
+  <five:registerPackage package="." initialize=".initialize" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="uwosh.intranet.tabsredux"
+      directory="profiles/default"
+      description="Installs the uwosh.intranet.tabsredux package"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <class class=".content.Tab">
+    <require permission="zope2.View" interface=".interfaces.ITab" />
+  </class>
+  
+  <class class=".content.TabDescription">
+    <require permission="zope2.View" interface=".interfaces.ITabDescription" />
+  </class>
+  
+  <class class=".content.TabGroup">
+    <require permission="zope2.View" interface=".interfaces.ITabGroup" />
+  </class>
+  
+  <class class=".content.TabLink">
+    <require permission="zope2.View" interface=".interfaces.ITabLink" />
+  </class>
+  
+  <browser:menuItem
+      for=".interfaces.ITab"
+      menu="plone_displayviews"
+      title="Tab View"
+      action="@@tab_view"
+      description=""
+      />
+      
+  <browser:page
+      for=".interfaces.ITab"
+      name="tab_view"
+      template="tab_view.pt"
+      class=".browser.TabView"
+      permission="zope2.View"
+      />
+      
+  <browser:resource
+      name="uwosh.intranet.tabsredux-tab_view.css"
+      file="tab_view.css"
+      />
+  
+  <browser:viewlet
+      name="uwosh.intranet.tabsredux"
+      manager="plone.app.layout.viewlets.interfaces.IPortalTop"
+      class=".browser.TabsViewlet"
+      layer="uwosh.intranet.tabsredux.interfaces.ILayer"
+      permission="zope2.View" 
+	  />
+      
+  <browser:page
+      for="*"
+      name="manage_tabs"
+      template="manage_tabs.pt"
+      class=".browser.ManageTabsView"
+      permission="zope2.View"
+      />
+      
+  <browser:page
+      for="*"
+      name="remove_from_my_tabs"
+      class=".browser.ManageTabsView"
+      attribute="remove_from_my_tabs"
+      permission="zope2.View"
+      />
+   
+  <browser:page
+      for="*"
+      name="add_to_my_tabs"
+      class=".browser.ManageTabsView"
+      attribute="add_to_my_tabs"
+      permission="zope2.View"
+      />
+      
+</configure>

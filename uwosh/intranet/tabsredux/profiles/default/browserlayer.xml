@@ -1,0 +1,4 @@
+<layers>
+    <layer name="uwosh.intranet.tabsredux" 
+           interface="uwosh.intranet.tabsredux.interfaces.ILayer" />
+</layers>

@@ -1,0 +1,35 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+
+<body>
+<metal:content fill-slot="content">
+    <metal:content define-macro="content">
+        <div id="content">
+            <h1 class="documentFirstHeading">Manage Tabs</h1>
+            <div id="content-core">
+                <h2>My Tabs</h2>
+                <ul>
+                    <li tal:repeat="tab view/my_tabs">
+                        <a tal:attributes="href tab/url" tal:content="tab/title" /> 
+                        [<a tal:attributes="href string:@@remove_from_my_tabs?tab=${tab/id}">Remove</a>]
+                    </li>
+                </ul>            
+                <h2>All Tabs</h2> 
+                <ul>
+                    <li tal:repeat="tab view/all_tabs">
+                        <a tal:attributes="href tab/url" tal:content="tab/title" /> 
+                        [<a tal:attributes="href string:@@add_to_my_tabs?tab=${tab/id}">Add</a>]
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </metal:content>
+</metal:content>
+</body>
+</html>
+

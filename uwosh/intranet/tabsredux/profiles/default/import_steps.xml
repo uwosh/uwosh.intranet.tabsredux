@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<import-steps>
+    <import-step id="uwosh.intranet.tabsredux.install" version="2"
+        handler="uwosh.intranet.tabsredux.importexport.install"
+        title="Installing step for uwosh.intranet.tabsredux">
+    </import-step>
+</import-steps>

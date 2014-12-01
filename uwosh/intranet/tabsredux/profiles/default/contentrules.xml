@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<contentrules>
+ <rule name="move-tabs" title="All Tabs Should Go To The Tabs Folder"
+    description="This rule moves all created tabs to the tabs folder located at the root of the plone site."
+    enabled="True" event="zope.app.container.interfaces.IObjectAddedEvent"
+    stop-after="False">
+  <conditions>
+   <condition type="plone.conditions.PortalType">
+    <property name="check_types">
+     <element>Tab</element>
+    </property>
+   </condition>
+  </conditions>
+  <actions>
+   <action type="plone.actions.Move">
+    <property name="target_folder">/tabs</property>
+   </action>
+  </actions>
+ </rule>
+ <assignment name="move-tabs" bubbles="True" enabled="True" location=""/>
+</contentrules>

@@ -1,0 +1,36 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      lang="en"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="plone">
+      
+<metal:css fill-slot="style_slot">
+    <link rel="stylesheet" type="text/css" href="++resource++uwosh.intranet.tabsredux-tab_view.css" media="screen" /> 
+</metal:css>
+<metal:javascript fill-slot="javascript_head_slot">
+</metal:javascript>
+
+<body>
+<metal:content-core fill-slot="content-core">
+    <metal:content-core define-macro="content-core">
+        <div id="descriptive-text" tal:content="structure view/description">
+            Descriptive rich text
+        </div>
+        <div id="groups">
+            <div class="group" tal:repeat="group view/groups" tal:attributes="id group/id">
+                <h3 tal:content="group/title">Group title</h3>
+                <ul class="links">
+                    <li class="link" tal:repeat="link group/links" tal:attributes="id link/id">
+                        <a tal:attributes="href link/url" tal:content="link/title">
+                            Link title
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </metal:content-core>
+</metal:content-core>
+</body>
+</html>

@@ -1,0 +1,8 @@
+<ul>
+    <li tal:repeat="tab view/tabs">
+        <a tal:attributes="href tab/url" tal:content="tab/title" /> 
+    </li>
+    <li tal:condition="not:view/is_anonymous_user">
+        <a href="@@manage_tabs">Manage My Tabs</a>
+    </li>
+</ul>
